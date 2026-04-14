@@ -10,4 +10,5 @@ namespace PsychologyApi.Core.Repositories
     public interface IJobApplicationRepository : IGenericRepository<JobApplication>
     {
     }
+
 }
