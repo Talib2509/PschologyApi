@@ -29,8 +29,7 @@ namespace PsychologyApi.DAL.Repositories
      
 
 
-        //public IEnumerable<T> GetAll(Expression<Func<T, bool>> expression) =>
-        //    Table.Where(expression);
+      
 
         public async Task<T> GetByIdAsync(int id)
             => await Table.FindAsync(id);
