@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using PsychologyApi.Core.Entities.Identity;
 using PsychologyApi.DAL.Context;
+using PsychologyApi.Business.Services;
+using PsychologyApi.Business.Services.Abstract;
 using System;
 using System.Text;
 
@@ -15,6 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 });
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -52,6 +55,7 @@ if (app.Environment.IsDevelopment())
 
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
