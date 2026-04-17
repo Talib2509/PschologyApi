@@ -29,6 +29,7 @@ public class AppDbContext : IdentityDbContext<AppUser, AppRole, int>
     public DbSet<Question> Question { get; set; }
     public DbSet<Vacancy> Vacancy { get; set; }
     public DbSet<Test>Tests { get; set; }
+    public DbSet<RefreshToken> RefreshTokens { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
