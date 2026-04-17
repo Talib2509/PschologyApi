@@ -5,8 +5,12 @@ using PsychologyApi.Core.Entities.Identity;
 using PsychologyApi.DAL.Context;
 using System;
 using System.Text;
+<<<<<<< HEAD
 using Microsoft.AspNetCore.Builder;
 using PsychologyApi.Business.Extensions;
+=======
+
+>>>>>>> 742daaffab314c7ead3edba9e7d324dd77721f39
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -15,6 +19,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
 });
+<<<<<<< HEAD
 
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddAuthentication(options =>
@@ -31,6 +36,23 @@ builder.Services.AddAuthentication(options =>
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
 
+=======
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+
+>>>>>>> 742daaffab314c7ead3edba9e7d324dd77721f39
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
 
