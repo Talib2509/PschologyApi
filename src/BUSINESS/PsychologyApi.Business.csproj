@@ -13,6 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.9" />
+    <PackageReference Include="Microsoft.Graph" Version="5.104.0" />
+=======
+>>>>>>> 742daaffab314c7ead3edba9e7d324dd77721f39
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.17.0" />
   </ItemGroup>
 
