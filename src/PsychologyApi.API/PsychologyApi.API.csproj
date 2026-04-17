@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -17,7 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BUSINESS\PsychologyApi.Business.csproj" />
+    <ProjectReference Include="..\BUSINESS\BUSINESS\PsychologyApi.Business.csproj" />
+    <ProjectReference Include="..\CORE\PsychologyApi.Core.csproj" />
     <ProjectReference Include="..\DAL\PsychologyApi.DAL.csproj" />
   </ItemGroup>
 
