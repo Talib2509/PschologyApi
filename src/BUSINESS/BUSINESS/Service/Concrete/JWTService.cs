@@ -5,6 +5,7 @@ using PsychologyApi.Business.DTOs;
 using PsychologyApi.Business.Services.Abstract;
 using PsychologyApi.Core.Entities.Identity;
 using PsychologyApi.Core.Repositories;
+using PsychologyApi.DAL.Context;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -14,14 +15,16 @@ public class JwtService : IJwtService
     private readonly UserManager<AppUser> _userManager;
     private readonly IConfiguration _config;
     private readonly IRefreshTokenRepository _refreshRepo;
+    private readonly AppDbContext _context;
 
     public JwtService(UserManager<AppUser> userManager,
                       IConfiguration config,
-                      IRefreshTokenRepository refreshRepo)
+                      IRefreshTokenRepository refreshRepo, AppDbContext context)
     {
         _userManager = userManager;
         _config = config;
         _refreshRepo = refreshRepo;
+        _context = context;
     }
 
     public async Task<AuthResponseDto> GenerateTokensAsync(AppUser user, string ip)
@@ -79,6 +82,12 @@ public class JwtService : IJwtService
     public async Task<AuthResponseDto> RefreshTokenAsync(string token, string ip)
     {
         var existing = await _refreshRepo.GetByTokenAsync(token);
+        if (string.IsNullOrEmpty(token)) return null;
+
+
+        //return await _context.RefreshTokens
+        //    .Include(x => x.User) 
+        //    .FirstOrDefaultAsync(x => x.Token == token);
 
         if (existing == null || !existing.IsActive)
             throw new Exception("Invalid token");
@@ -94,6 +103,7 @@ public class JwtService : IJwtService
         existing.ReplacedByToken = newTokens.RefreshToken;
 
         await _refreshRepo.SaveAsync();
+
 
         return newTokens;
     }
