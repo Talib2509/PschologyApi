@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace PsychologyApi.Core.Entities.Identity
 {
     public class AppUser : IdentityUser<int>
-    {
+    {//v
+
 
     }
 }
