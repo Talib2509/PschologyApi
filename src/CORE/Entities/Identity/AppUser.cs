@@ -9,6 +9,6 @@ namespace PsychologyApi.Core.Entities.Identity
 {
     public class AppUser : IdentityUser<int>
     {
-
+        public string? ProfileImageUrl { get; set; }
     }
 }
