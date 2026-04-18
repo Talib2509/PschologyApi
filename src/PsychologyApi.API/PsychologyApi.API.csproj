@@ -22,8 +22,4 @@
     <ProjectReference Include="..\DAL\PsychologyApi.DAL.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
 </Project>

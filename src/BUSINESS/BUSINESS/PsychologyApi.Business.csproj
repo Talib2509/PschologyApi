@@ -14,7 +14,5 @@
     <ProjectReference Include="..\..\CORE\PsychologyApi.Core.csproj" />
     <ProjectReference Include="..\..\DAL\PsychologyApi.DAL.csproj" />
   </ItemGroup>
-	<ItemGroup>
-		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-	</ItemGroup>
+
 </Project>
