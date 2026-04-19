@@ -8,6 +8,6 @@ namespace PsychologyApi.Business.DTOs
 {
     public class RefreshTokenRequestDto
     {
-        public string RefreshToken { get; set; }
+        public string? RefreshToken { get; set; }
     }
 }

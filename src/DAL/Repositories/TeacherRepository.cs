@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace PsychologyApi.DAL.Repositories
 {
-    public class VacancyRepository : GenericRepository<Vacancy>, IVacancyRepository
+    public class TeacherRepository : GenericRepository<Teacher>, ITeacherRepository
     {
-        public VacancyRepository(AppDbContext _context) : base(_context)
+        public TeacherRepository(AppDbContext _context) : base(_context)
         {
 
         }

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using PsychologyApi.Core.Entities.Identity;
 using PsychologyApi.Core.Enums;
-using System.Data;
+
 
 namespace PsychologyApi.Business.Extensions
 {

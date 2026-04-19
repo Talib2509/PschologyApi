@@ -9,12 +9,10 @@ using System.Threading.Tasks;
 
 namespace PsychologyApi.DAL.Repositories
 {
-    public class PsychologistRepository : GenericRepository<Psychologist>, IPsychologistRepository
+    public class CourseRepository : GenericRepository<Course>, ICourseRepository
     {
-        public PsychologistRepository(AppDbContext _context) : base(_context)
+        public CourseRepository(AppDbContext _context) : base(_context)
         {
-
         }
     }
-    
 }

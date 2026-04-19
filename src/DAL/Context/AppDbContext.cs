@@ -19,16 +19,18 @@ public class AppDbContext : IdentityDbContext<AppUser, AppRole, int>
 
     }
  
-    public DbSet<Answer>Answers {  get; set; }
-    public DbSet<Appointment> Appointments { get; set; }
     public DbSet<BlogPost> Blogs { get; set; }
-    public DbSet<Category> Categories { get; set; }
-    public DbSet<JobApplication> JobApplications { get; set; }
-    public DbSet<Psychologist> Psychologists { get; set; }
-    public DbSet<Service> Services { get; set; }
+    public DbSet<BlogCategory> Categories { get; set; }
+    public DbSet<Enrollment> JobApplications { get; set; }
+    public DbSet<Teacher> Teachers { get; set; }
+    
     public DbSet<Question> Question { get; set; }
-    public DbSet<Vacancy> Vacancy { get; set; }
+
     public DbSet<Test>Tests { get; set; }
+    public DbSet<Answer> Answers { get; set; }
+    public DbSet<Certificate> Certificates { get; set; }
+    public DbSet<Course> Courses { get; set; }
+    public DbSet<TestResult> TestResults { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
