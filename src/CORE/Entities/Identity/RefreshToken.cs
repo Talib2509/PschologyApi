@@ -22,7 +22,7 @@ namespace PsychologyApi.Core.Entities.Identity
         public int AppUserId { get; set; }
         public AppUser User { get; set; }
 
-        public string ReplacedByToken { get; set; }
+        public string? ReplacedByToken { get; set; }
 
         public bool IsExpired => DateTime.UtcNow >= Expires;
         public bool IsActive => !IsRevoked && !IsExpired;
