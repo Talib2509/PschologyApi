@@ -3,30 +3,21 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-//using PsychologyApi.API.Middlewares;
-using PsychologyApi.Business.Service.Abstract;
-using PsychologyApi.Business.Service.Concrete;
-using PsychologyApi.Business.Services.Abstract;
-//using PsychologyApi.Business.Services.Concrete;
 using PsychologyApi.Core.Entities.Identity;
-using PsychologyApi.Core.Enums;
-using PsychologyApi.Core.Repositories;
 using PsychologyApi.DAL.Context;
-using PsychologyApi.DAL.Repositories;
 using System.Text;
-
+using PsychologyApi.Business.Extensions;
+using PsychologyApi.Business;
+using PsychologyApi.DAL;
+using PsychologyApi.Business.Exception.AuthException;
 var builder = WebApplication.CreateBuilder(args);
-
-
 builder.Services.AddControllers();
 
-
-builder.Services.AddScoped<IJwtService, JwtService>();
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
+builder.Services.AddRepositories();
+builder.Services.AddService();
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -35,7 +26,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddIdentity<AppUser, AppRole>()
     .AddEntityFrameworkStores<AppDbContext>()
-    .AddDefaultTokenProviders();
+    .AddDefaultTokenProviders()
+    .AddErrorDescriber<CustomErrorDescriber>();
 
 
 builder.Services.AddAuthentication(options =>
@@ -106,21 +98,9 @@ app.UseHttpsRedirection();
 //app.UseMiddleware<TokenBlacklistMiddleware>();
 app.UseAuthentication();
 app.UseAuthorization();
-
+await app.UseUserSeedAsync();
 app.MapControllers();
 
 
-using (var scope = app.Services.CreateScope())
-{
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<AppRole>>();
-
-    foreach (var role in Enum.GetNames(typeof(Roles)))
-    {
-        if (!await roleManager.RoleExistsAsync(role))
-        {
-            await roleManager.CreateAsync(new AppRole { Name = role });
-        }
-    }
-}
 
 app.Run();

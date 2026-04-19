@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using PsychologyApi.Business.DTOs;
-using PsychologyApi.Business.Services.Abstract;
+using PsychologyApi.Business.Service.Abstract;
 using PsychologyApi.Core.Entities.Identity;
 using PsychologyApi.Core.Repositories;
 using PsychologyApi.DAL.Context;

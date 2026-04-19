@@ -7,7 +7,8 @@ using PsychologyApi.Core.Entities;
 
 namespace PsychologyApi.Core.Repositories
 {
-    public interface IVacancyRepository : IGenericRepository<Vacancy>
+    public interface IBlogCategoryRepository : IGenericRepository<BlogCategory>
     {
+        
     }
 }

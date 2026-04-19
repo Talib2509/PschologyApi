@@ -7,7 +7,5 @@ using PsychologyApi.Core.Entities;
 
 namespace PsychologyApi.Core.Repositories
 {
-    public interface IAppointmentRepository : IGenericRepository<Appointment>
-    {
-    }
+    public interface ITeacherRepository : IGenericRepository<Teacher> { }
 }

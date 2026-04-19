@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PsychologyApi.DAL.Repositories
 {
-    public class JobApplicationRepository : GenericRepository<JobApplication>, IJobApplicationRepository
+    public class JobApplicationRepository : GenericRepository<Enrollment>, IJobApplicationRepository
     {
         public JobApplicationRepository(AppDbContext _context) : base(_context)
         {
