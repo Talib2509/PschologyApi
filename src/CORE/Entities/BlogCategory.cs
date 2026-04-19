@@ -5,14 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using PsychologyApi.Core.Entities.Common;
 
+
 namespace PsychologyApi.Core.Entities
 {
-    public class Question : BaseEntity
+    public class BlogCategory : BaseEntity
     {
-        public string QuestionText { get; set; } 
-        public string QuestionType { get; set; }
-        public int TestId { get; set; }
-       
-    
+       public string Name { get; set; }
+        public string Slug { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PsychologyApi.Business.DTOs;
 using PsychologyApi.Business.DTOs.AuthDTO;
+using PsychologyApi.Business.Extensions;
 using PsychologyApi.Business.Service.Abstract;
 using PsychologyApi.Business.Services.Abstract;
 using PsychologyApi.Core.Entities.Identity;
@@ -31,8 +32,9 @@ namespace PsychologyApi.Business.Service.Concrete
                 throw new Exception("Email ve ya password duzgun deyil");
             }
 
+            var roles = await _userManager.GetRolesAsync(user);
 
-            var authResponse = await _jwtService.GenerateTokensAsync(user, "");
+            var authResponse = await _jwtService.GenerateTokensAsync(user, roles.FirstOrDefault());
 
             return authResponse;
 
@@ -61,7 +63,14 @@ namespace PsychologyApi.Business.Service.Concrete
             }
             var user = await _userManager.FindByEmailAsync(dto.Email);
 
-            await _userManager.AddToRoleAsync(user, Roles.User.ToString());
+            // Role validation (təhlükəsizlik üçün)
+            if (dto.Role != Roles.Teacher && dto.Role != Roles.Student)
+            {
+                throw new Exception("Yalniz Teacher ve ya Student secile biler");
+            }
+
+            // Role əlavə et
+            await _userManager.AddToRoleAsync(user, dto.Role.GetRole());
 
 
             //await _userManager.AddToRoleAsync(appUser, IdentityRoles.Member.ToString());

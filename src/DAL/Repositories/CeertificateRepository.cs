@@ -9,12 +9,10 @@ using System.Threading.Tasks;
 
 namespace PsychologyApi.DAL.Repositories
 {
-    public class AppointmentRepository : GenericRepository<Appointment>, IAppointmentRepository
+    public class CertificateRepository : GenericRepository<Certificate>, ICertificateRepository
     {
-        public AppointmentRepository(AppDbContext _context) : base(_context)
+        public CertificateRepository(AppDbContext _context) : base(_context)
         {
-
         }
     }
-    
 }

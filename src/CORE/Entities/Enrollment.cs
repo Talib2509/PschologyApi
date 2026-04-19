@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using PsychologyApi.Core.Entities.Common;
 
-
 namespace PsychologyApi.Core.Entities
 {
-    public class Category : BaseEntity
+    public class Enrollment : BaseEntity
     {
-        public string Name { get; set; } 
-        public ICollection<BlogPost> BlogPosts { get; set; }
+       public int UserId { get; set; }
+        public int CourseId { get; set; }
+        public DateTime EnrolledAt { get; set; } = DateTime.Now;
     }
 }

@@ -11,10 +11,9 @@ namespace PsychologyApi.Core.Entities
     {
         public string Title { get; set; }
         public string Content { get; set; }
-        public string CoverImageUrl { get; set; }
-        public string Author { get; set; }
-        public int ReadingTimeInMinutes { get; set; } 
+       public DateTime CreatedAt { get; set; } = DateTime.Now;
+
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public BlogCategory Category { get; set; }
     }
 }

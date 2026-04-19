@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace PsychologyApi.Core.Enums
 {
-    public enum Roles
+    public enum Levels
     {
-        Admin = 1,
-        Teacher = 2,
-        Student = 3,
-
+        Beginner = 1,
+        Intermediate = 2,
+        Advanced = 3
     }
 }

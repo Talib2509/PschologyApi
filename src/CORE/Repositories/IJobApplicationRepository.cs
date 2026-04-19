@@ -7,7 +7,7 @@ using PsychologyApi.Core.Entities;
 
 namespace PsychologyApi.Core.Repositories
 {
-    public interface IJobApplicationRepository : IGenericRepository<JobApplication>
+    public interface IJobApplicationRepository : IGenericRepository<Enrollment>
     {
     }
 
