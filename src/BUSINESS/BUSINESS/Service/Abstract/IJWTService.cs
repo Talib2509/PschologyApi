@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PsychologyApi.Business.Services.Abstract
+namespace PsychologyApi.Business.Service.Abstract
 {
     public interface IJwtService
     {

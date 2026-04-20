@@ -5,15 +5,8 @@ using PsychologyApi.Business.DTOs;
 using PsychologyApi.Business.DTOs.AuthDTO;
 using PsychologyApi.Business.Extensions;
 using PsychologyApi.Business.Service.Abstract;
-using PsychologyApi.Business.Services.Abstract;
 using PsychologyApi.Core.Entities.Identity;
 using PsychologyApi.Core.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace PsychologyApi.Business.Service.Concrete
 {
     public class AuthService(UserManager<AppUser> _userManager, IMapper _mapper, IJwtService _jwtService) : IAuthService
@@ -23,13 +16,13 @@ namespace PsychologyApi.Business.Service.Concrete
             var user = await _userManager.FindByEmailAsync(dto.Email);
             if (user is null)
             {
-                throw new Exception("Istifadeci tapilmadi");
+                throw new System.Exception("Istifadeci tapilmadi");
             }
             var isTruePassword = await _userManager.CheckPasswordAsync(user, dto.Password);
 
             if (!isTruePassword)
             {
-                throw new Exception("Email ve ya password duzgun deyil");
+                throw new System.Exception("Email ve ya password duzgun deyil");
             }
 
             var roles = await _userManager.GetRolesAsync(user);
@@ -45,7 +38,7 @@ namespace PsychologyApi.Business.Service.Concrete
             var isExistEmail = await _userManager.Users.AnyAsync(x => x.Email.ToLower() == dto.Email.ToLower());
             if (isExistEmail)
             {
-                throw new Exception("Bu Email artiq movcuddur");
+                throw new System.Exception("Bu Email artiq movcuddur");
             }
 
 
@@ -59,21 +52,21 @@ namespace PsychologyApi.Business.Service.Concrete
             if (!result.Succeeded)
             {
                 var errors = string.Join(", ", result.Errors.Select(e => e.Description));
-                throw new Exception(errors);
+                throw new System.Exception(errors);
             }
             var user = await _userManager.FindByEmailAsync(dto.Email);
 
             // Role validation (təhlükəsizlik üçün)
             if (dto.Role != Roles.Teacher && dto.Role != Roles.Student)
             {
-                throw new Exception("Yalniz Teacher ve ya Student secile biler");
+                throw new System.Exception("Yalniz Teacher ve ya Student secile biler");
             }
 
             // Role əlavə et
             await _userManager.AddToRoleAsync(user, dto.Role.GetRole());
 
 
-            //await _userManager.AddToRoleAsync(appUser, IdentityRoles.Member.ToString());
+            
             return new();
         }
     }

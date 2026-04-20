@@ -26,7 +26,7 @@ namespace PsychologyApi.Business.Services
         {
             var user = await _userManager.FindByIdAsync(id.ToString());
 
-            if (user == null) throw new Exception("User not found.");
+            if(user == null) throw new System.Exception("User not found.");
 
             return new UserDto
             {
@@ -40,9 +40,9 @@ namespace PsychologyApi.Business.Services
         public async Task<string> UploadProfileImageAsync(int id, IFormFile file)
         {
             var user = await _userManager.FindByIdAsync(id.ToString());
-            if (user == null) throw new Exception("User not found.");
+            if (user == null) throw new System.Exception("User not found.");
 
-            if (file == null || file.Length == 0) throw new Exception("File is not selected or empty.");
+            if (file == null || file.Length == 0) throw new System.Exception("File is not selected or empty.");
 
             string uploadFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", "profiles");
             if (!Directory.Exists(uploadFolder)) Directory.CreateDirectory(uploadFolder);

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PsychologyApi.Business.Validators
+namespace PsychologyApi.Business.Exception.AuthException
 {
     public class CustomErrorDescriber : IdentityErrorDescriber
     {

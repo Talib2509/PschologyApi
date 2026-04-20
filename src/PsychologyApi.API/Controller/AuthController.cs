@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using PsychologyApi.Business.DTOs;
 using PsychologyApi.Business.DTOs.AuthDTO;
 using PsychologyApi.Business.Service.Abstract;
-using PsychologyApi.Business.Services.Abstract;
+
 using PsychologyApi.Core.Entities.Identity;
 
 namespace PsychologyApi.API.Controller
