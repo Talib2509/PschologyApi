@@ -22,7 +22,7 @@ namespace PsychologyApi.Business.Service.Concrete
 
             if (!isTruePassword)
             {
-                throw new System.Exception("Email ve ya password duzgun deyil");//
+                throw new System.Exception("Email ve ya password duzgun deyil");// Istifadeci tapilmadi ve ya password duzgun deyil mesajini vermek daha guvenlidir, cunku bu sekilde hakerler hangi bilginin yanlis oldugunu bilemezler.
             }
 
             var roles = await _userManager.GetRolesAsync(user);
