@@ -22,7 +22,7 @@ namespace PsychologyApi.Business.Service.Concrete
 
             if (!isTruePassword)
             {
-                throw new System.Exception("Email ve ya password duzgun deyil");
+                throw new System.Exception("Email ve ya password duzgun deyil");//
             }
 
             var roles = await _userManager.GetRolesAsync(user);
