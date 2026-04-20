@@ -361,17 +361,3 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-appsettings.json
-appsettings.Development.json
-
-# Visual Studio müvəqqəti faylları
-.vs/
-[Bb]in/
-[Oo]bj/
-*.user
-*.suo
-*.sln.docstates
-
-# Şəkillər qovluğu (Yalnız qovluq özü getsin, şəkillər yox)
-wwwroot/uploads/*
-!wwwroot/uploads/.gitkeep)
