@@ -7,12 +7,6 @@ using PsychologyApi.Business.Extensions;
 using PsychologyApi.Business.Service.Abstract;
 using PsychologyApi.Core.Entities.Identity;
 using PsychologyApi.Core.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace PsychologyApi.Business.Service.Concrete
 {
     public class AuthService(UserManager<AppUser> _userManager, IMapper _mapper, IJwtService _jwtService) : IAuthService
