@@ -3,6 +3,15 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+
+using PsychologyApi.Business.Services;
+
+//using PsychologyApi.API.Middlewares;
+using PsychologyApi.Business.Service.Abstract;
+using PsychologyApi.Business.Service.Concrete;
+using PsychologyApi.Business.Services.Abstract;
+
+
 using PsychologyApi.Core.Entities.Identity;
 using PsychologyApi.DAL.Context;
 using System.Text;
@@ -29,6 +38,7 @@ builder.Services.AddIdentity<AppUser, AppRole>()
     .AddDefaultTokenProviders()
     .AddErrorDescriber<CustomErrorDescriber>();
 
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -93,7 +103,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseStaticFiles();
 
 //app.UseMiddleware<TokenBlacklistMiddleware>();
 app.UseAuthentication();

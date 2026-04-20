@@ -12,6 +12,6 @@ namespace PsychologyApi.Business.Service.Abstract
     {
         Task<AuthResponseDto> GenerateTokensAsync(AppUser user, string ipAddress);
         Task<AuthResponseDto> RefreshTokenAsync(string refreshToken, string ipAddress);
-        Task RevokeTokenAsync(string refreshToken, string ipAddress);
+        Task RevokeTokenAsync(string refreshToken, string ipAddress);//.
     }
 }
